@@ -115,7 +115,18 @@ public class Calculate {
 		}
 		return factval;		
 	}
-	public static int isPrime
+	public static int isPrime(int num){
+		boolean bool;
+		if(num==0||num==1){  
+   			bool == false;      
+  		}else{
+			for(int i=1;i<=num;i++){
+				if(n%i==0){
+					bool == false;
+				}
+			}
+   		}       
+	}
 }
 
 
