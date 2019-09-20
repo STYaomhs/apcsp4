@@ -11,121 +11,225 @@ public class Calculate {
 		int answer = 0;
 		answer= number*number;
 		return answer;
-		
-	}
+	//returns the cube of a number
 	public static int cube(int num) {
-		/*This method is used to cube a number*/
-		int answer = 0
-		answer = num*num*num;
-		return answer;
+		int ans = num * num * num;
+		return(ans);
 	}
-	public static double average(double num1, double num2){
-		/*This method creates the average of two numbers by adding them then dividng by two*/
-		int answer = 0;
-		answer = (num1*num2)/2;
-		return answer;
+	
+	//returns the average of two numbers
+	public static double average(double num1, double num2) {
+		double ans = (num1 + num2)/2;
+		return(ans);
 	}
-	public static double todegrees(int rad) {
-		/*Method used to convert radians to degrees, by multiplying 180 degrees, then dividing by pi as 180 degrees = pi*/
-		double degrees = 0;
-		degree = (rad*180)/3.14159;
-		/*3.14159 represents pi*/
-		return degree;
+	
+	//returns the average of three numbers
+	public static double average(double num1, double num2, double num3) {
+		double ans = (num1 + num2 + num3)/3;
+		return(ans);
 	}
-	public static double toRadians(double degree){
-		/*This method does the opposite of toDegrees*/
-		double radians = 0;
-		radians = (degree*3.14159)/180
-		return radians;
+	
+	//converts radians to degrees
+	public static double toDegrees(double rad) {
+		double ans = rad *(180/3.14159);
+		return(ans);
 	}
-	public static double discriminant(double num1, double num2, double num3){
-		/*the Discriminant uses the coeffiecients(a,b,c) of quadratic formula, and helps determine the number of solutions in the equation*/
-		discrim = 0;
-		discrim = (num2*num2)-(4*num1*num3);
-		/*the equation for discriminant is b squared minus four a c*/
-		return discrim;
+	
+	//converts degrees to radians 
+	public static double toRadians(double deg) {
+		double ans = deg *(3.14159/180);
+		return(ans);
 	}
-	public static int toImproperFrac(int num1,int num2,int num3){
-		/*This method turns an mixed number into an improper fraction*/
-		int numerator = 0;
-		int numerator = (num1*num3)+num2;
-		/*the numerator is solved by multiplying the whole number and the denominator. Then you add the numerator in the mixed number*/
-		System.out.println(numerator + "/" + num3);
+	
+	//finds the discriminant
+	public static double discriminant(double a, double b, double c) {
+		double ans = (b * b) - (4 * a * c);
+		return(ans);
 	}
-	public static int toMixedNum(int num1,int num2){
-		/*Method that does opposite of previous method*/
-		int whole = num1-(num1%num2);
-		/*whole refering to whole number next to fraction in mixed number*/
-		int numerator = num1 - whole;
-		int denomerator = num2;
-		System.out.println(whole + " " + numerator + "/" + denom);
+	
+	//converts a mixed number to an improper fraction
+	public static String toImproperFrac(int whole, int top, int bottom) {
+		int numerator = (whole * bottom) + top;
+		String ans = numerator + "/" + bottom;
+		return(ans);
 	}
-	public static void foil(String args[]){
-		String 
+	
+	//converts an improper fraction to a mixed number
+	public static String toMixedNum(int top, int bottom) {
+		int whole = top / bottom;
+		int numerator = top % bottom;
+		String ans = whole + "_" + numerator + "/" + bottom;
+		return(ans);
 	}
-	public static int isDivisbleBy(int num1,int num2){
-		boolean divide = num1%num2 == 0;
-		return divide;
+	
+	//expands the binomial from the form of (ax + b)(cx + d) into ax^2 + bx +c
+	public static String foil(int varOne, int numOne, int varTwo, int numTwo, String variable) {
+		int firstCoefficient = varOne * varTwo;
+		int secondCoefficient = (varOne * numTwo) + (varTwo * numOne);
+		String firstTerm = firstCoefficient + variable + "^2";
+		String secondTerm = secondCoefficient + variable;
+		int thirdTerm = numOne * numTwo;
+		String ans = firstTerm + " + " + secondTerm + " + " + thirdTerm;
+		return(ans);
 	}
-	public static double absValue(double num){
-		double answer = 0;
-		if(num<-1){
-			answer = num*-1
+	
+	//this determines whether numOne is divisible by numTwo
+	public static boolean isDivisibleBy(int numOne, int numTwo) {
+		if(numTwo==0) {
+			throw new IllegalArgumentException("Cannot divide by zero. Your second number: " + numTwo);
+		}
+		boolean ans = numOne % numTwo == 0;
+		return(ans);
+	}
+	
+	//returns the absolute value of a number
+	public static double absValue(double num) {
+		double ans;
+		if(num < 0){
+			ans = num * (-1);
 		}else{
-			answer= num
+			ans = num;
 		}
-		return answer
+		return(ans);
 	}
-	public static double max(double num1,double num2){
-		if(num1<num2){
-			return num2;
+	
+	//returns the higher of two doubles
+	public static double max(double numOne, double numTwo) {
+		double ans;
+		if(numOne > numTwo){
+			ans = numOne;
 		}else{
-			return num1;
+			ans = numTwo;
 		}
+		return(ans);
 	}
-	public static double max(double num21, double num22, double num3){
-		if(num21>num22){
-			return num21;
-		}else if(num23>num22){
-			return num23;
+	
+	//returns the higher of three doubles
+	public static double max(double numOne, double numTwo, double numThree) {
+		double highOne = max(numOne, numTwo);
+		double highTwo = max(numOne, numThree);
+		double ans = max(highOne, highTwo);
+		return(ans);
+	}
+	
+	//returns the lower of two integers
+	public static int min(int numOne, int numTwo) {
+		int ans;
+		if(numOne < numTwo) {
+			ans = numOne;
 		}else{
-			return num22;
+			ans = numTwo;
 		}
-		
+		return(ans);
 	}
-   	public static int min(int num1, int num2){
-		if(num1>num2){
-			return num2;
-		}else{
-			return num1;
+	
+	//rounds a double to two decimal values
+	public static double round2(double num) {
+		num *= 100;
+		if(num < 0) {
+			num -= 0.5;
+		}else {
+			num += 0.5;
 		}
+		num = (int) num;
+		double ans =  num / 100;
+		return(ans);
 	}
-   	public static double round2(double num){
-		double answer = 0;
-		answer = 
-	}
-	public static {
-	}
-	public static int factorial(int num){
-		int i = 1;
-		int factval = 1;
-		while(i <= num){
-			factval = factval*i;
-			i++;
+	
+	//multiplies a double by itself int times
+	public static double exponent(double value, int power) {
+		boolean negPower = false;
+		if(power<0) {
+			negPower = true;
+			power *= -1;
 		}
-		return factval;		
+		double orig = value;
+		value = 1;
+		for(int i=0; i<power; i++) {
+			value *= orig;
+		}
+		if(negPower) {
+			value = 1 / value;
+		}
+		return(value);
 	}
-	public static int isPrime(int num){
-		boolean bool;
-		if(num==0||num==1){  
-   			bool == false;      
-  		}else{
-			for(int i=1;i<=num;i++){
-				if(n%i==0){
-					bool == false;
-				}
+	
+	//returns the factorial of a number
+	public static int factorial(int num) {
+		if(num < 0) {
+			throw new IllegalArgumentException("No negative numbers. Your number: " + num);
+		}
+		int ans = 1;
+		for(int i=num; i>0; i--) {
+			ans *= i;
+		}
+		return(ans);
+	}
+	
+	//returns a true or false for whether a number is prime
+	public static boolean isPrime(int num) {
+		boolean prime = true;
+		for(int i=2; i<num; i++) {
+			if(isDivisibleBy(num, i)){
+				prime = false;
 			}
-   		}       
+		}
+		if(num<2) {
+			prime = false;
+		}
+		return(prime);
+	}
+	
+	//returns the greatest common factor of two integers
+	public static int gcf(int numOne, int numTwo) {
+		int ans = 1;
+		int lowest = min(numOne, numTwo);
+		for(int i=2; i<=lowest; i++){
+			if(isDivisibleBy(numOne, i) && isDivisibleBy(numTwo, i)){
+				ans = i;
+			}
+		}
+		return(ans);
+	}
+	
+	//returns the square root of a number
+	public static double sqrt(double num) {
+		if(num<0) {
+			throw new IllegalArgumentException("No real square root of a negative number. Your number: " + num);
+		}
+		double highSquared = 0;
+		double ans;
+		while(highSquared * highSquared < num) {
+			highSquared++;
+		}
+		if(highSquared * highSquared == num) {
+			ans = highSquared;
+		}else{
+			while(highSquared * highSquared > num) {
+				highSquared -= 0.001;
+			}
+			ans = round2(highSquared);
+		}
+		return(ans);
+	}
+	
+	//returns the roots of a quadratic
+	public static String quadForm(int a, int b, int c) { 
+		double discrim = discriminant(a, b, c);
+		if(discrim < 0) {
+			return("No real roots");
+		}
+		double xVertexValue = (double) (-b) / (2 * a);
+		double firstRoot = round2(xVertexValue - (sqrt(discrim) / (2 * a)));
+		double secondRoot = round2(xVertexValue + (sqrt(discrim) / (2 * a)));
+		if(discrim == 0) {
+			return("" + firstRoot);
+		}else{
+			return(firstRoot + " and " + secondRoot);
+		}
+	}
+}
+
 	}
 }
 
